@@ -1,21 +1,24 @@
-name: The Force
+name: The Force # Namnet på min action
 
-on: push
+on: push # Vad som ska trigga min action
 
-jobs:
-  build:
+jobs: # Här nedanför kommer det som skall utföras när min action triggas
+  build: # Bygga min solution
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest # Miljön min solution skall byggas i 
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+    steps: # Här nedanför beskrivs stegen i att bygga
+    - name: Checkout
+      uses: actions/checkout@v2 # Checkar ut main för att kunna bygga
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v1 # Installerar dotnet
       with:
         dotnet-version: 5.0.x
-    - name: Restore
-      run: dotnet restore Source/SpacePark.sln
+    - name: Restore 
+      run: dotnet restore Source/SpacePark.sln # Importerar NuGet-paketen som används i min solution
     - name: Build
-      run: dotnet build --no-restore Source/SpacePark.sln
+      run: dotnet build --no-restore Source/SpacePark.sln # Bygger min solution SpacePark utan att köra restore igen
     - name: Test
-      run: dotnet test --no-build --verbosity normal Source/SpacePark.sln
+      run: dotnet test --no-build --verbosity normal Source/SpacePark.sln # Kör de tester som finns utan att bygga igen och skriver ut resultatet
+    - name: Print
+      run: echo "The fork is strong in this one!"
