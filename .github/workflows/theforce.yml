@@ -1,15 +1,11 @@
 name: The Force
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v2
