@@ -36,15 +36,6 @@ namespace SpaceParkTestProject
         }
 
         [Fact]
-        public async Task GetShipLength_Expect_Length()
-        {
-            var swApi = new SwApi();
-            var result = await swApi.GetShipLength("x-wing");
-
-            Assert.Equal(12.5, result);
-        }
-
-        [Fact]
         public async Task GetSpaceTraveller_InvalidName_Expect_Exception_Message()
         {
             var swApi = new SwApi();
